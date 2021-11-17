@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  ScrollView,
+  Linking,
+} from "react-native";
 import axios from "axios";
 
-export default function Search() {
+export default function Search({ navigation }) {
   var [query, setQuery] = useState("");
   var [data, setData] = useState([]);
 
@@ -48,6 +55,9 @@ export default function Search() {
                   marginVertical: 5,
                   fontSize: 20,
                   fontWeight: "bold",
+                }}
+                onPress={() => {
+                  Linking.openURL(`${art.url}`);
                 }}
               >
                 {art.title}
